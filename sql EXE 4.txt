@@ -1,0 +1,25 @@
+1.
+110
+SELECT COUNT(`productVendor`) FROM `products`;
+2.
+6,3,6,4,4,303
+SELECT COUNT(status) FROM `orders` GROUP BY status;
+3.
+SELECT salesRepEmployeeNumber, AVG(creditLimit) as aveg FROM customers GROUP BY salesRepEmployeeNumber;
+4.
+SELECT state, MAX(creditLimit) FROM customers GROUP BY state;
+SELECT state, MIN(creditLimit) FROM customers GROUP BY state;
+5.
+SELECT officeCode, COUNT(*) FROM employees GROUP BY officeCode;
+6.
+SELECT customerNumber, AVG(amount) AS aveg FROM payments GROUP BY customerNumber ORDER BY aveg;
+SELECT customerNumber, AVG(amount) AS aveg FROM payments GROUP BY customerNumber ORDER BY aveg DESC;
+7.
+SELECT productVendor, AVG(buyPrice) FROM `products` GROUP BY productVendor;
+8.
+SELECT salesRepEmployeeNumber ,customerNumber AS handle FROM customers GROUP BY `salesRepEmployeeNumber`;
+9.
+SELECT orderDate, COUNT(orderNumber) FROM `orders` GROUP BY orderDate;
+2004-11-24
+10.
+SELECT productScale, COUNT(productScale) FROM products GROUP BY productScale;
