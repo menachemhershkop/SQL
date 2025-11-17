@@ -1,0 +1,55 @@
+1.
+SELECT * FROM `ground_polution` WHERE `Sug tipul` = 'טרם נבדק';
+2.
+SELECT * FROM `ground_polution` WHERE `Status gas karka` LIKE '%יש חשד';
+3.
+SELECT * FROM `ground_polution` WHERE `Peelut mezahemet` = 'כימית';
+4.
+SELECT * FROM `ground_polution` WHERE `Peelut mezahemet` = 'מטמנה';
+5.
+SELECT * FROM `ground_polution` WHERE `Matzav Minhali` = 'חקירה';
+6.
+SELECT * FROM `ground_polution` WHERE `Drisha lemigun mivnim` = 'טרם נבדק';
+7.
+SELECT * FROM `ground_polution` WHERE `Moed thilat tipul` > '2009';
+8.
+SELECT * FROM `ground_polution` WHERE NOT `Moed thilat tipul`;
+9.
+SELECT * FROM `ground_polution` WHERE `Moed sium tipul` LIKE "טרם הסתיים";
+10.
+SELECT * FROM `ground_polution` WHERE `Shem atar rashi` LIKE 'מפעל%';
+11.
+SELECT * FROM `ground_polution` WHERE `Gush` ='100116';
+12.
+SELECT * FROM `ground_polution` WHERE `Helka` = '1';
+13.
+SELECT * FROM `ground_polution` WHERE `Peelut mezahemet` != 'מזהמת';
+14.
+SELECT * FROM `ground_polution` WHERE `Status gas karka` != 'לא נבדק ואין חשד';
+15.
+SELECT * FROM `ground_polution` WHERE `ktuvet` LIKE 'מישור%';
+16.
+17.
+18.
+19.
+20.
+21.
+22.
+23.
+24.
+25.
+26.
+27.
+28.
+29.
+30.
+31.
+32.
+33.
+34.
+35.
+36.
+37.
+38.
+39.
+40.
