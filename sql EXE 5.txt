@@ -1,0 +1,28 @@
+1.
+CREATE DATABASE school
+2.
+CREATE TABLE teachers_backup (id INT AUTO_INCREMENT PRIMARY KEY, TeacheName VARCHAR(100), TeacherName VARCHAR(50) NOT NULL, Email VARCHAR(70) NOT NULL, Phone VARCHAR(15));
+3.
+CREATE TABLE IF NOT EXISTS `school`.`students_temp` (`Id` int(3), `FullName` varchar(17), `IdentityNumber` bigint(12), `BirthDate` varchar(10), `ClassId` int(1), `personlId` varchar(10)) DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;;
+4.
+CREATE TABLE study_hours AS SELECT * FROM studey_hours_extend WHERE classid in (1,2,3,4,5);
+5.
+ALTER TABLE lecturers ADD Email VARCHAR (70);
+6.
+ALTER TABLE lecturers MODIFY COLUMN LecturerName VARCHAR(80) NOT NULL;
+6a.
+ALTER TABLE classes DROP status;
+7.
+DROP teachers_backup
+8.
+CREATE TABLE students AS SELECT * FROM students_temp;
+9.
+ALTER TABLE students DROP personlId;
+10.
+ALTER TABLE students ADD age INT CHECK (age >21 AND age < 15);
+11.
+DELETE FROM students WHERE BirthDate < '1992%';
+12.
+
+13.
+DROP students_temp;
