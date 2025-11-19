@@ -1,0 +1,17 @@
+1.
+SELECT LecturerName FROM lecturers UNION ALL SELECT LecturerName FROM lecturers_new;
+19 שורות
+SELECT LecturerName FROM lecturers UNION SELECT LecturerName FROM lecturers_new;
+18 שורות
+פקודה ראשונה מוחקת כפילויות, שניה לא.
+
+2.
+SELECT FullName FROM students_temp UNION SELECT FullName FROM students_new;
+לא, משום שחלק מהערכים כפולים.
+3.
+SELECT courseName FROM courses UNION ALL SELECT courseName FROM courses_new;
+4.
+SELECT students_temp.FullName, classes.Class, courses.CourseName FROM students_temp INNER JOIN classes ON students_temp.ClassId = classes.Id INNER JOIN courses ON classes.CourseId = courses.Id;
+5.
+SELECT lecturers.LecturerName FROM lecturers LEFT JOIN study_hours ON study_hours.ClassId WHERE lecturers.id IN (study_hours.MorningLecturerId, study_hours.AfternoonLecturerId);********
+6.
