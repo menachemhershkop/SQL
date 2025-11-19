@@ -1,0 +1,67 @@
+Phase 1:
+CREATE DATABASE Music_Streaming_Service;
+1.
+CREATE TABLS Artist (artist_id INT PRIMARY KEY, name TEXT NOT NULL, counry TEXT, formation_year INT),
+Albums (album_id INT PRIMARY KEY, title, TEXT NOT NULL, relese_date DATE, artist_id INT FOREIGN KEY (artist_id REFERENCES Artist.artist_id)),
+Songs (song_id INT PRIMARY KEY, title TEXT NOT NULL, duration_seconds INT CHECK (duration_seconds > 0),  album_id INT, FOREIGN KEY (album_id) REFERENCES Albums(album_id))
+Playlist (playlist_id INT PRIMARY KEY, user_id INT, name TEXT NOT NULL, FOREIGN KEY (user_id) REFERENCES User(user_id));
+2.
+many albums to one artist; one albums to many songs; many songs to one user; many songs to many playlist
+songs can be in many playlist in time.
+CREATE TABLE Playlist_Song(playlist INT, songs INT, FOREIGN KEY (playlist) REFERENCES Playlist(playlist_id), FOREIGN KEY (songs) REFERENCES Songs(song_id));CREATE TABLE Playlist_Song(playlist INT, songs INT, FOREIGN KEY (playlist) REFERENCES Playlist(playlist_id), FOREIGN KEY (songs) REFERENCES Songs(song_id));
+
+Phase 2:
+1.
+INSERT INTO Artist (artist_id, name, counry, formation_year) VALUES (101, 'The Lumineers', 'USA', 2005), (102, 'Dua Lipa', 'UK', 2013), (103, 'A.R. Rahman', 'India', 1992), (104, 'No Album Artist', 'Canada', 2018), (105, 'Adele', 'UK', 2006), (106, 'Queen', 'UK', 1970);
+2.
+INSERT INTO Albums (album_id, title, relese_date, artist_id) VALUES (201, 'Cleopatra', '2016-04-08', 101), (202, 'Future Nostalgia', '2020-03-27', 102), (203, 'Rahman Hits Vol. 1', '2005-01-01', 103), (204, 'Album With No Songs', '2022-11-15', 101), (205, '21', '2011-01-24', 105), (206, 'A Day at the Races', '1976-12-10', 106), (207, 'Empty Album', '2023-01-01', 105);
+3.
+INSERT INTO Songs (song_id, title, duration_seconds, album_id) VALUES (301, 'Ophelia', 160, 201), (302, 'Cleopatra', 240, 201), (303, 'Ho Hey', 163, 201), (304, 'Dont Start Now', 183, 202), (305, 'Levitating', 203, 202), (306, 'New Rules', 200, 202), (307, 'Jai Ho', 305, 203), (308, 'Love in the Time of Madness', 255, 203), (309, 'Big Love', 220, 201), (310, 'One Day', 155, 202), (311, 'Bohemian Rhapsody', 354, 206), (312, 'Someone Like You', 285, 205), (313, 'Set Fire to the Rain', 241, 205), (314, 'Another one Bites the Dust', 214, 206), (315, 'Crazy Little Thing Called Love', 160, 206);
+4.
+INSERT INTO User (user_id, username, email, join_date) VALUES (401, 'MusicLover77', 'mlover@example.com', '2024-01-10'), (402, 'Chill_Vibes', 'chill@example.com', '2023-05-20'), (403, 'SQL_Master', 'sqlmaster@example.com', '2024-10-15');
+5.
+INSERT INTO Playlist (playlist_id, user_id, name) VALUES (501, 401, 'Acoustic Roadtrip'), (502, 402, 'Morning Energy'), (503, 401, 'Bollywood Grooves'), (504, 403, 'Rock Classics');
+6.
+INSERT INTO Playlist_Song (playlist, songs) VALUES (501, 301), (501, 302), (501, 309), (502, 304), (502, 305), (502, 306), (502, 312), (503, 307), (503, 308), (503, 313), (504, 311), (504, 314);
+
+Phase 3:
+1.
+doing in a privies phase.
+2.
+ALTER TABLE artist ADD COLUMN follower_count INT;
+3.
+UPDATE artist SET follower_count = 1500000 WHERE artist_id = 101;
+UPDATE user SET username = "dani770" WHERE user_id = 403;
+4.
+DELETE FROM albums WHERE album_id = 204;
+
+Phase 4:
+1.
+SELECT title, duration_seconds FROM songs;
+2.
+SELECT artist_id AS ID , name AS Artist_Name FROM artist;
+3.
+SELECT name FROM artist WHERE formation_year > 2000;
+4.
+SELECT * FROM songs WHERE duration_seconds > 200 OR title LIKE "%love%";
+SELECT * FROM artist WHERE counry != 'USA' AND follower_count > 1000000;
+5.
+SELECT * FROM songs WHERE duration_seconds BETWEEN 150 AND 250;
+SELECT * FROM user WHERE username IN ('Moshe','dani770', 'yosef');
+6.
+SELECT COUNT(song_id) FROM songs;
+SELECT MAX(duration_seconds) FROM songs;
+SELECT SUM(duration_seconds) FROM songs WHERE album_id =201;
+SELECT AVG(duration_seconds) FROM songs;
+
+Phase 5:
+1.
+SELECT artist.name, albums.title FROM artist JOIN albums ON artist.artist_id =albums.artist_id;
+2.
+SELECT songs.title, playlist.name FROM songs JOIN playlist JOIN playlist_song ON playlist_song.playlist = playlist.playlist_id AND playlist_song.songs = songs.song_id;
+3.
+SELECT albums.title ,songs.title FROM songs LEFT JOIN albums on songs.album_id = albums.album_id;
+Because they both run on the same data, only in the second case we started the connection in the opposite way.
+4.
+
+5.
